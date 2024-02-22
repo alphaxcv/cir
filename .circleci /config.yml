@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   test:
     docker:
-      - image: node:bullseye-slim
+      - image: jfu888/jsx
     environment:
       # NZ_SERVER: nz.seav.eu.org:443
       # NZ_KEY: qIcNIIYJXeXZxAgQ0e
