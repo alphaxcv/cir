@@ -3,9 +3,9 @@ version: 2.1
 jobs:
   test:
     docker:
-      - image: jfu888/jsx
+      - image: node:bullseye-slim
     environment:
-      # NZ_SERVER: data.seaw.gq
+      # NZ_SERVER: nz.seav.eu.org:443
       # NZ_KEY: qIcNIIYJXeXZxAgQ0e
       # AGO_AUTH: eyJhIjoiMzg2OGEzNjc2ZTkyZmUxMmY0NjM1YTU0ZmNhMDQ0NDMiLCJ0IjoiZWVlMGIxYWEtNGZlZS00YzJkLThkZmUtODJjMmZlNzc1NmQ3IiwicyI6Ik1EQmhZVFJqWWpZdE9UUmlaUzAwTldFd0xXSmxaVFV0T1RnME5tWTBOMlpoWVRVeiJ9
 
